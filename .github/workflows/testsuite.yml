@@ -74,18 +74,11 @@ jobs:
           fetch-depth: 1
       - name: perl -V
         run: perl -V
-      - name: install dependencies
-        uses: perl-actions/install-with-cpm@v1.3
-        with:
-          sudo: false
-          install: |
-            ExtUtils::MakeMaker
-            Pod::Escapes
-            Text::Wrap
-      - name: Makefile.PL
-        run: perl -I$(pwd) Makefile.PL
-      - name: make test
-        run: make test
+      - uses: perl-actions/ci-perl-tester-helpers/install-test-helper-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-build-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/build-dist@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-dist-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/test-dist@main
 
   macOS:
     needs: [ubuntu]
@@ -108,16 +101,11 @@ jobs:
           fetch-depth: 1
       - name: perl -V
         run: perl -V
-      - name: install dependencies
-        uses: perl-actions/install-with-cpm@v1.3
-        with:
-          install: |
-            Pod::Escapes
-            Text::Wrap
-      - name: Makefile.PL
-        run: perl -I$(pwd) Makefile.PL
-      - name: make test
-        run: make test
+      - uses: perl-actions/ci-perl-tester-helpers/install-test-helper-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-build-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/build-dist@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-dist-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/test-dist@main
 
   windows:
     needs: [ubuntu]
@@ -144,11 +132,8 @@ jobs:
           echo "C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin" >> $GITHUB_PATH
       - name: perl -V
         run: perl -V
-      - name: install dependencies
-        uses: perl-actions/install-with-cpm@v1.3
-        with:
-          sudo: false
-          install: |
-            Pod::Escapes
-            Text::Wrap
-      - run: prove -vl t/*.t
+      - uses: perl-actions/ci-perl-tester-helpers/install-test-helper-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-build-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/build-dist@main
+      - uses: perl-actions/ci-perl-tester-helpers/cpan-install-dist-deps@main
+      - uses: perl-actions/ci-perl-tester-helpers/test-dist@main
