@@ -74,7 +74,7 @@ jobs:
           fetch-depth: 1
       - name: perl -V
         run: perl -V
-      - uses: perl-actions/ci-perl-tester-helpers/install-test-helper-deps@main
+      - uses: happy-barney/ci-perl-tester-helpers/install-test-helper-deps@hpb/dev
       - uses: perl-actions/ci-perl-tester-helpers/cpan-install-build-deps@main
       - uses: perl-actions/ci-perl-tester-helpers/build-dist@main
       - uses: perl-actions/ci-perl-tester-helpers/cpan-install-dist-deps@main
