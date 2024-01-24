@@ -36,7 +36,7 @@ jobs:
         run: make test
 
   perl-versions:
-    uses: perl-actions/.github/workflows/perl-versions.yml@main
+    uses: perl-actions/perl-versions/.github/workflows/perl-versions.yml@main
     with:
       since-perl: 5.8
 
