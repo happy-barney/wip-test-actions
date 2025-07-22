@@ -83,7 +83,7 @@ jobs:
           cpanfile: "cpanfile"
           args: "--with-suggests --with-recommends --with-test"
       - name: install sendmail
-        run: sudo apt-get install -y --no-install-recommends sendmail-bin
+        run: apt-get install -y --no-install-recommends sendmail-bin
       - run: prove -lr t
         env:
           AUTHOR_TESTING: 0
